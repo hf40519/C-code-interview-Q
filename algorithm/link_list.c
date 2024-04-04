@@ -8,46 +8,82 @@ struct Node
     struct Node *next;
 };
 
-// 函數原型
-void insert(struct Node **head_ref, int new_data);
-void deleteNode(struct Node **head_ref, int key);
-void printList(struct Node *node);
-
-// 插入新節點到鏈表的開頭
-void insert(struct Node **head_ref, int new_data)
+void append(struct Node **head_ptr, int data)
 {
-    // 分配新節點的內存空間
+    // create new node
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
-    // 將資料存入新節點
-    new_node->data = new_data;
-    // 將新節點的 next 指向目前的鏈表頭部
-    new_node->next = *head_ref;
-    // 更新鏈表的頭部為新節點
-    *head_ref = new_node;
+    new_node->data = data;
+    new_node->next = NULL;
+
+    // append new node to tail
+    if (*head_ptr == NULL)
+    {
+        *head_ptr = new_node;
+        return;
+    }
+
+    struct Node *last = *head_ptr;
+    while (last->next != NULL)
+        last = last->next;
+    last->next = new_node;
 }
 
-// 從鏈表中刪除指定元素
-void deleteNode(struct Node **head_ref, int key)
+void insert(struct Node **head_ptr, int position, int data)
 {
-    // 暫存目前的節點與前一個節點
-    struct Node *temp = *head_ref, *prev = NULL;
-    // 如果目前節點不是空的且目前節點的資料不是要刪除的元素，繼續找下一個節點
-    while (temp != NULL && temp->data != key)
+    // create new node
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+    new_node->data = data;
+    new_node->next = NULL;
+
+    if (position == 0)
     {
-        prev = temp;
-        temp = temp->next;
+        new_node->next = *head_ptr;
+        *head_ptr = new_node;
+        return;
     }
-    // 如果找到了要刪除的節點
-    if (temp != NULL)
+
+    struct Node *curr = *head_ptr, *prev = NULL;
+    int index = 0;
+    while (index < position && curr != NULL)
     {
-        // 將前一個節點的 next 指向目前節點的下一個節點
-        if (prev != NULL)
-        {
-            prev->next = temp->next;
-        }
-        // 釋放目前節點的內存空間
-        free(temp);
+        prev = curr;
+        curr = curr->next;
+        index++;
     }
+    if (index != position)
+    {
+        printf("Invalid insert position: %d \n", position);
+        return;
+    }
+    prev->next = new_node;
+    new_node->next = curr;
+}
+
+void delete(struct Node **head_ptr, int position)
+{
+    if (position == 0 && *head_ptr != NULL)
+    {
+        struct Node *next = (*head_ptr)->next;
+        free(*head_ptr);  // free malloc
+        *head_ptr = next; // new head
+        return;
+    }
+
+    struct Node *curr = *head_ptr, *prev = NULL;
+    int index = 0;
+    while (index < position && curr->next != NULL)
+    {
+        prev = curr;
+        curr = curr->next;
+        index++;
+    }
+    if (index != position)
+    {
+        printf("Invalid delete position: %d \n", position);
+        return;
+    }
+    prev->next = curr->next;
+    free(curr); // free malloc
 }
 
 // 打印鏈表的所有節點
@@ -64,21 +100,23 @@ void printList(struct Node *node)
 // 測試主函數
 int main()
 {
-    // 定義鏈表頭部指針
+    // link list head pointer
     struct Node *head = NULL;
-
     // 插入節點
-    insert(&head, 3);
-    insert(&head, 2);
-    insert(&head, 1);
+    append(&head, 1);
+    append(&head, 2);
+    append(&head, 3);
 
-    printf("Link list: ");
+    printf("Link list after append: ");
+    printList(head);
+
+    insert(&head, 1, -1);
+    printf("Link list after insert: ");
     printList(head);
 
     // 刪除節點
-    deleteNode(&head, 2);
-
-    printf("Link list (delete 2): ");
+    delete (&head, 1);
+    printf("Link list after delete: ");
     printList(head);
 
     return 0;
