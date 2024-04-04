@@ -13,6 +13,7 @@ int main()
   int *p = &r;
 
   fun(&p); // 需傳入pointer本身的位址 &p, 若直接傳p是傳入r的址
+  printf("%d \n", r);
   printf("%d \n", *p);
 
   return 0;
