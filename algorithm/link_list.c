@@ -86,6 +86,19 @@ void delete(struct Node **head_ptr, int position)
     free(curr); // free malloc
 }
 
+struct Node *reverse(struct Node **node)
+{
+    struct Node *prev = NULL, *next;
+    while (*node != NULL)
+    {
+        next = (*node)->next;
+        (*node)->next = prev;
+        prev = *node;
+        *node = next;
+    }
+    return prev;
+}
+
 // 打印鏈表的所有節點
 void printList(struct Node *node)
 {
@@ -118,6 +131,10 @@ int main()
     delete (&head, 1);
     printf("Link list after delete: ");
     printList(head);
+
+    struct Node *new_head = reverse(&head);
+    printf("Link list after reverse: ");
+    printList(new_head);
 
     return 0;
 }
