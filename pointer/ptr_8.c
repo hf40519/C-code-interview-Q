@@ -7,8 +7,8 @@ int main()
     // 32-bit 會是 4 bytes，64-bit 會是 8 bytes，但是並不是一定如此。
     char arr[] = {1, 2, 3};
     char *p = arr;
-    printf(" %d ", sizeof(p));
-    printf(" %d ", sizeof(arr));
+    printf(" %d ", sizeof(p));   // 8
+    printf(" %d ", sizeof(arr)); // 3
 
     return 0;
-}    
+}

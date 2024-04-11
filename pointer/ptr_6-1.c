@@ -12,9 +12,9 @@ int main()
   int r = 20;
   int *p = &r;
 
-  fun(&p); // 需傳入pointer本身的位址 &p, 若直接傳p是傳入r的址
-  printf("%d \n", r);
-  printf("%d \n", *p);
+  fun(&p);             // 需傳入pointer本身的位址 &p, 若直接傳p是傳入r的址
+  printf("%d \n", r);  // 20
+  printf("%d \n", *p); // 10
 
   return 0;
 }

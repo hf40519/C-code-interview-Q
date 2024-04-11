@@ -23,7 +23,7 @@ int main()
     typedef struct Student Student;
 
     // 使用结构体类型别名创建结构体变量
-    Student s1 = {"Alice", 20};
+    Student s1 = {"Alice", 20}; // 一開始就宣告char array就不用使用strcpy
     Student s2 = {"Bob", 22};
 
     // 访问结构体成员并打印

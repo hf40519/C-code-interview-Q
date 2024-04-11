@@ -16,3 +16,12 @@ int main(void)
 
     return 0;
 }
+
+/*
+
+main     0(-)  1(-)
+child1     -     -
+child1-1         --
+child2           --
+
+*/

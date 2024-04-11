@@ -13,5 +13,5 @@ int main()
     // scanf 的回傳值是成功讀取幾個變數
     // scanf 使用空格、換行符、tab分隔
 
-    return 1;
+    return 0;
 }

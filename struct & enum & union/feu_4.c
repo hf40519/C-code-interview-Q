@@ -15,13 +15,12 @@ int main()
     printf("%p, \n", p);
 
     int arr1[] = {1, 2, 3, 4};
-    int *arr2;
-    arr2 = arr1;
+    int *arr2 = arr1;
 
     arr1[0] = -1;
 
-    printf("%d, \n", arr1[0]);
-    printf("%d, \n", arr2[0]);
+    printf("%d, \n", arr1[0]); // -1
+    printf("%d, \n", arr2[0]); // -1
 
     return 0;
 }

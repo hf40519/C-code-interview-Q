@@ -12,7 +12,7 @@ int main()
     char *m = str[4] + 4;
     char *n = str[1];
     char *p = *(str + 2) + 4;
-    printf("1. %s\n", *(str + 1));   // MediaTekOnlineTesting
+    printf("1. %s\n", *(str + 1));   // WelcomeToHere
     printf("2. %s\n", (str[3] + 8)); // Genius
     printf("3. %c\n", *m);           // E
     printf("4. %c\n", *(n + 3));     // c
@@ -22,7 +22,6 @@ int main()
     printf("%c", a + 1); // a+1=b
 
     // C語言 'A' 用於宣告char; "ABC" 用於宣告string (結尾符為 '\O')
-
 
     // 1. int p 一個整型數（An integer）
     // 2. int *p 一個指向整型數的指標（A pointer to an integer）

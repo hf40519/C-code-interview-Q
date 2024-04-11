@@ -22,9 +22,9 @@ int main()
 
     enum A a = i;
 
-    printf("%d\n", i);
-    printf("%d\n", j);
-    printf("%c\n", k);
-    printf("%d\n", a);
+    printf("%d\n", i); // 10
+    printf("%d\n", j); // 10
+    printf("%c\n", k); // 'A'
+    printf("%d\n", a); // 10
     return 0;
 }

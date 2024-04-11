@@ -13,6 +13,6 @@ int func(int a)
 int main(void)
 {
     int i = 5;
-    printf("%d\n", func(i));
+    printf("%d\n", func(i)); // 14
     return 0;
 }

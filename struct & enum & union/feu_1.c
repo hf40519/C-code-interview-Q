@@ -14,11 +14,11 @@ int main()
 
     a.no_of_pages = 200;
 
-    printf("%d \n", ptr->no_of_pages);
+    printf("%d \n", ptr->no_of_pages); // 200
 
     ptr->no_of_pages = 300;
-    
-    printf("%d \n", a.no_of_pages);
+
+    printf("%d \n", a.no_of_pages); // 300
 
     return 0;
 }
